@@ -18,7 +18,11 @@ X_train, X_val, y_train, y_val = train_test_split(
 )
 
 # 3. Convert text to TF-IDF features
-vectorizer = TfidfVectorizer(max_features=5000, stop_words='english')
+vectorizer = TfidfVectorizer(
+   max_features=15000, 
+   ngram_range=(1, 3),     #unigrams + bigrams + trigrams
+   stop_words='english')
+
 X_train_tfidf = vectorizer.fit_transform(X_train)
 X_val_tfidf = vectorizer.transform(X_val)
 
